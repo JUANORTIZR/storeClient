@@ -1,0 +1,36 @@
+<div class="container">
+
+  <div class="row">
+
+    <h3>Crear nuevo producto</h3>
+    <div class="col-4">
+      <div class="mb-3">
+        <label for="exampleInputEmail1" class="form-label">Descripcion</label>
+        <input type="email" [(ngModel)]="producto.descripcion" class="form-control" id="exampleInputEmail1" placeholder="Ingresa el nombre del producto" aria-describedby="emailHelp">
+      </div>
+
+    </div>
+    <div class="col-3">
+      <div class="mb-3">
+        <label for="exampleInputEmail1" class="form-label">Precio</label>
+        <input type="number" [(ngModel)]="producto.precioUnitario" class="form-control" id="exampleInputEmail1" placeholder="Ingresa el precio del producto" aria-describedby="emailHelp">
+      </div>
+
+    </div>
+    <div class="col-3">
+      <div class="mb-3">
+        <label for="exampleInputEmail1" class="form-label">Iva</label>
+        <input type="number" [(ngModel)]="producto.iva" class="form-control" id="exampleInputEmail1" placeholder="Ingresa el iva del producto" aria-describedby="emailHelp">
+      </div>
+    </div>
+    <div class="col-2">
+      <div class="mt-4">
+        <button (click)="guardar()" class="btn btn-primary">
+            Guardar
+        </button>
+      </div>
+    </div>
+
+  </div>
+
+</div>
