@@ -9,13 +9,15 @@ import { InicioComponent } from './pages/inicio/inicio.component';
 import { GenerarVentaComponent } from './pages/generar-venta/generar-venta.component';
 import { CrearProductoComponent } from './pages/crear-producto/crear-producto.component';
 import { HttpClientModule } from '@angular/common/http';
+import { GestionClienteComponent } from './pages/gestion-cliente/gestion-cliente.component';
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     InicioComponent,
     GenerarVentaComponent,
-    CrearProductoComponent
+    CrearProductoComponent,
+    GestionClienteComponent
   ],
   imports: [
     BrowserModule,

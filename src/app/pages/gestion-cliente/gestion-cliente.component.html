@@ -1,0 +1,102 @@
+<div class="container">
+
+  <div class="row">
+    <h3 *ngIf="editarMode==false">Crear cliente</h3>
+    <h3 *ngIf="editarMode">Actualizar cliente</h3>
+    <div class="col-auto">
+      <label for="exampleInputEmail1" class="form-label">Identificacion</label>
+      <div class="mb-2 input-group">
+        <input type="text" [readonly]="editarMode" [(ngModel)]="cliente.identificacion" class="form-control"
+          id="exampleInputEmail1" placeholder="Ingresa la identificacion" aria-describedby="emailHelp">
+      </div>
+
+    </div>
+    <div class="col-auto">
+      <label for="exampleInputEmail1" class="form-label">Nombres</label>
+      <div class="mb-2 input-group">
+        <input type="text" [(ngModel)]="cliente.nombres" class="form-control" id="exampleInputEmail1"
+          placeholder="Ingresa los nombres del cliente" aria-describedby="emailHelp">
+      </div>
+
+    </div>
+    <div class="col-auto">
+      <label for="exampleInputEmail1" class="form-label">Apellidos</label>
+      <div class="mb-2 input-group">
+        <input type="text" [(ngModel)]="cliente.apellidos" class="form-control" id="exampleInputEmail1"
+          placeholder="Ingresa los apellidos del cliente" aria-describedby="emailHelp">
+      </div>
+
+    </div>
+    <div class="col-auto">
+      <label for="exampleInputEmail1" class="form-label">Correo</label>
+      <div class="mb-2 input-group">
+        <input type="text" [(ngModel)]="cliente.correo" class="form-control" id="exampleInputEmail1"
+          placeholder="Ingresa el correo del cliente" aria-describedby="emailHelp">
+      </div>
+
+    </div>
+    <div class="col-auto">
+      <label for="exampleInputEmail1" class="form-label">Direccion</label>
+      <div class="mb-2 input-group">
+        <input type="email" [(ngModel)]="direccion" class="form-control" id="exampleInputEmail1"
+          placeholder="Ingresa el correo" aria-describedby="emailHelp">
+        <button (click)="agregarDireccion()" class="btn btn-outline-secondary" type="button"
+          id="inputGroupFileAddon04">+</button>
+      </div>
+    </div>
+    <div class="col-auto">
+      <label for="exampleInputEmail1" class="form-label">Telefono</label>
+      <div class="mb-2 input-group">
+        <input type="email" [(ngModel)]="telefono" class="form-control" id="exampleInputEmail1"
+          placeholder="Ingresa el correo" aria-describedby="emailHelp">
+        <button (click)="agregarTelefono()" class="btn btn-outline-secondary" type="button"
+          id="inputGroupFileAddon04">+</button>
+      </div>
+    </div>
+
+    <div *ngIf="editarMode==false" class="col-auto">
+      <button (click)="guardar()" class="btn btn-primary mt-4">
+        Guardar
+      </button>
+    </div>
+    <div *ngIf="editarMode" class="col-auto">
+      <button (click)="actualizar()" class="btn btn-primary mt-4">
+        Actualizar
+      </button>
+    </div>
+  </div>
+
+
+
+ <div class="row">
+    <div class="col">
+      <table class="table table-success table-striped">
+        <thead>
+          <th scope="row">#</th>
+          <th>Identificacion</th>
+          <th>Nombres</th>
+          <th>Apellidos</th>
+          <th>Correo</th>
+          <th>Direccion</th>
+          <th>Telefono</th>
+          <th>Accion</th>
+        </thead>
+        <tbody>
+          <tr *ngFor="let cliente of clientes; index as i">
+            <th scope="row">{{i+1}}</th>
+            <td>{{cliente.identificacion}}</td>
+            <td>{{cliente.nombres}}</td>
+            <td>{{cliente.apellidos}}</td>
+            <td>{{cliente.correo}}</td>
+            <td>{{cliente.direcciones[0].descripcion}}</td>
+            <td>{{cliente.telefonos[0].numero}}</td>
+            <td><a (click)="eliminar(cliente.identificacion)" type="button" class="btn btn-danger">eliminar</a>
+              <span  (click)="editar(cliente)" type="button" class="btn btn-primary mx-2">editar</span>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+</div>
