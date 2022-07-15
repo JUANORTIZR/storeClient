@@ -1,1 +1,32 @@
-<p>historial-ventas works!</p>
+
+<h3>Historial de ventas</h3>
+<div class="row">
+  <div class="col">
+    <table class="table table-success table-striped">
+      <thead>
+        <th scope="row">#</th>
+        <th>Id</th>
+        <th>Estado</th>
+        <th>Fecha de venta</th>
+        <th>Fecha de entrega</th>
+        <th>Cliente</th>
+        <th>Total</th>
+        <th>Accion</th>
+      </thead>
+      <tbody>
+        <tr *ngFor="let factura of facturas; index as i">
+          <th scope="row">{{i+1}}</th>
+          <td>{{factura.id}}</td>
+          <td>{{factura.estado}}</td>
+          <td>{{factura.fechaVenta}}</td>
+          <td>{{factura.fechaEntrega}}</td>
+          <td>{{factura.cliente}}</td>
+          <td>{{factura.total}}</td>
+          <td>
+            <span  (click)="editar(factura)" type="button" class="btn btn-primary mx-2">Aplicar nota credito</span>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

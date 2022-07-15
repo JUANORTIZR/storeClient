@@ -6,23 +6,8 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav">
-        <li class="nav-item">
-          <a class="nav-link active" type="button" aria-current="page"  routerLink="/generarVenta" routerLinkActive="router-link-active" >Venta</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link active" type="button" aria-current="page" routerLink="/crearProduto" routerLinkActive="router-link-active">Producto</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link active" type="button" aria-current="page" routerLink="/gestioCliente" routerLinkActive="router-link-active">Cliente</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link active" type="button" aria-current="page" routerLink="/gestionRoles" routerLinkActive="router-link-active">Roles</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link active" type="button" aria-current="page" routerLink="/formaDePago" routerLinkActive="router-link-active">Formas de pago</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+        <li *ngFor="let item of rutas" class="nav-item">
+          <a class="nav-link active" type="button" aria-current="page"  [routerLink]="[item.ruta]" routerLinkActive="router-link-active" >{{item.titulo}}</a>
         </li>
       </ul>
     </div>

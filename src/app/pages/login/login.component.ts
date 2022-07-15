@@ -9,20 +9,25 @@ import { LoginService } from 'src/app/services/login.service';
 })
 export class LoginComponent implements OnInit {
 
-  usuario:string = ''
-  clave:string = ''
+  usuario: string = ''
+  clave: string = ''
+
   constructor(private router: Router, private loginService: LoginService) { }
 
   ngOnInit(): void {
+
   }
 
-  login(){
+  login() {
+    localStorage.removeItem('token');
+    localStorage.removeItem('usuarioActivo');
     this.loginService.login(this.usuario, this.clave).subscribe(data => {
-      if(data.object!="Datos incorrectos"){
-        localStorage.setItem('token',data.object);
+      if (data.message != "Datos incorrectos") {
+        localStorage.setItem('token', data.message);
+        localStorage.setItem('usuarioActivo', JSON.stringify(data.object))
         this.router.navigate(['/inicio']);
-      }else{
-        alert(data.object)
+      } else {
+        alert(data.message)
       }
 
     })

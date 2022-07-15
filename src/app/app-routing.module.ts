@@ -5,6 +5,7 @@ import { GenerarVentaComponent } from './pages/generar-venta/generar-venta.compo
 import { GestionClienteComponent } from './pages/gestion-cliente/gestion-cliente.component';
 import { GestionarFormasDePagoComponent } from './pages/gestionar-formas-de-pago/gestionar-formas-de-pago.component';
 import { GestionarRolesComponent } from './pages/gestionar-roles/gestionar-roles.component';
+import { HistorialVentasComponent } from './pages/historial-ventas/historial-ventas.component';
 import { InicioComponent } from './pages/inicio/inicio.component';
 import { LoginComponent } from './pages/login/login.component';
 
@@ -36,6 +37,10 @@ const routes: Routes = [
   {
     path:"formaDePago",
     component: GestionarFormasDePagoComponent
+  },
+  {
+    path:"historialVentas",
+    component: HistorialVentasComponent
   }
 ];
 

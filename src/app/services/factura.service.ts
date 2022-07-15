@@ -38,7 +38,7 @@ export class FacturaService {
       fechaEntrega: factura.fechaEntrega,
       direccionEntrega: factura.direccionEntrega,
       total: Number(factura.total),
-      cliente: factura.cliente,
+      cliente: factura.cliente.identificacion,
       detallesDeFacturas: factura.detallesDeFactura,
       formaDePago: factura.formasDePago,
     }
@@ -54,6 +54,21 @@ export class FacturaService {
 
   delete(id: any): Observable<Response> {
     return this.http.delete<Response>(this.urbBase + "/delete/" + id,this.getHeader());
+  }
+
+  put(id:any, factura:Factura): Observable<Response>{
+    const body = {
+      id: Number(factura.id),
+      estado: factura.estado,
+      fechaVenta: factura.fechaVenta,
+      fechaEntrega: factura.fechaEntrega,
+      direccionEntrega: factura.direccionEntrega,
+      total: Number(factura.total),
+      cliente: factura.cliente.identificacion,
+      detallesDeFacturas: factura.detallesDeFactura,
+      formaDePago: factura.formasDePago,
+    }
+    return this.http.put<Response>(this.urbBase+"/update"+id,body, this.getHeader())
   }
 
   update(factura: any): Observable<Response> {
