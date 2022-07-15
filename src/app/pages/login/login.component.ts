@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { LoginService } from 'src/app/services/login.service';
 
 @Component({
   selector: 'app-login',
@@ -8,13 +9,25 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private router: Router) { }
+  usuario:string = ''
+  clave:string = ''
+  constructor(private router: Router, private loginService: LoginService) { }
 
   ngOnInit(): void {
   }
 
   login(){
-    this.router.navigate(['/inicio']);
+    this.loginService.login(this.usuario, this.clave).subscribe(data => {
+      if(data.object!="Datos incorrectos"){
+        localStorage.setItem('token', JSON.stringify(data.object));
+        this.router.navigate(['/inicio']);
+      }else{
+        alert(data.object)
+      }
+
+    })
+
   }
+
 
 }
