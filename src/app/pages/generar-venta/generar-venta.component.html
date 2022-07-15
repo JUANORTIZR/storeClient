@@ -1,1 +1,131 @@
-asdkasjdjasdjalkjñ
+<div class="container">
+
+  <div class="row">
+    <h3>Crear venta</h3>
+    <div class="col-auto">
+      <label for="exampleInputEmail1" class="form-label">Identificacion del cliente</label>
+      <div class="mb-2 input-group">
+        <input type="number" [(ngModel)]="factura.cliente.identificacion" class="form-control" id="exampleInputEmail1"
+          placeholder="Ingresa la identificacion del cliente" aria-describedby="emailHelp">
+        <button (click)="consultarCliente()" class="btn btn-outline-secondary" type="button"
+          id="inputGroupFileAddon04">Buscar</button>
+      </div>
+    </div>
+
+    <div class="col-auto">
+      <div class="mb-2">
+        <label for="exampleInputEmail1" class="form-label">Apellidos cliente</label>
+        <input type="text" [(ngModel)]="factura.cliente.apellidos" class="form-control" id="exampleInputEmail1"
+          placeholder="Ingresa la referencia del producto" aria-describedby="emailHelp">
+      </div>
+    </div>
+
+    <div class="col-auto">
+      <label for="exampleInputEmail1" class="form-label">Direccion de entrega</label>
+      <div class="input-group mb-3">
+        <select [(ngModel)]="factura.direccionEntrega" class="form-select" id="inputGroupSelect01">
+          <option *ngFor="let direccion of factura.cliente.direcciones" [ngValue]="direccion.descripcion">
+            {{direccion.descripcion}}
+          </option>
+        </select>
+      </div>
+    </div>
+
+    <div class="col-auto">
+      <label for="exampleInputEmail1" class="form-label">Fecha de entrega</label>
+      <div class="mb-2 input-group">
+        <input type="date" [(ngModel)]="factura.fechaEntrega" class="form-control" id="exampleInputEmail1"
+          placeholder="Ingresa la identificacion del cliente" aria-describedby="emailHelp">
+      </div>
+    </div>
+    <div class="col-auto">
+      <label for="">Formas de pago</label>
+      <p>
+        <select name="miselect" [(ngModel)]="listaFormas" multiple="multiple">
+          <option [value]="item" *ngFor="let item of formasDePago">{{item.formaDePago}}</option>
+        </select>
+      </p>
+    </div>
+    <div class="col-auto">
+      <ul>
+        <li *ngFor="let item of listaFormas">
+          {{item.formaDePago}}
+        </li>
+      </ul>
+    </div>
+
+
+  </div>
+
+
+  <div class="row">
+    <div class="col-6">
+      <label for="exampleInputEmail1" class="form-label">Productos</label>
+      <div class="input-group mb-3">
+        <select [(ngModel)]="productoSeleccionado" class="form-select" id="inputGroupSelect01">
+          <option *ngFor="let producto of productos" [ngValue]="producto">{{producto.descripcion}}</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="col-5">
+      <div class="mb-2 ">
+        <label for="exampleInputEmail1" class="form-label">Cantidad</label>
+        <input type="number" [(ngModel)]="cantidad" class="form-control" id="exampleInputEmail1" placeholder="cantidad"
+          aria-describedby="emailHelp">
+
+      </div>
+    </div>
+    <div class="col-1">
+      <button (click)="agregarCarrito()" class="btn btn-outline-success mt-4" type="button"
+        id="inputGroupFileAddon04">Agregar</button>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col">
+      <table class="table table-success table-striped">
+        <thead>
+          <th scope="row">#</th>
+          <th>Producto</th>
+          <th>Precio unitario</th>
+          <th>Iva</th>
+          <th>Cantidad</th>
+          <th>Total</th>
+          <th>Accion</th>
+        </thead>
+        <tbody>
+          <tr *ngFor="let detalle of factura.detallesDeFactura; index as i">
+            <th scope="row">{{i+1}}</th>
+            <td>{{detalle.producto.descripcion}}</td>
+            <td>{{detalle.precioUnitario}}</td>
+            <td>{{detalle.iva}}</td>
+            <td>{{detalle.cantidad}}</td>
+            <td>{{detalle.total}}</td>
+            <td><a (click)="eliminar(i)" type="button" class="btn btn-danger">Eliminar</a>
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">Total:</th>
+            <th scope="row"></th>
+            <th scope="row"></th>
+            <th scope="row"></th>
+            <th scope="row"></th>
+            <td>{{factura.total}}</td>
+            <th scope="row"></th>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col ">
+      <div (click)="generarVenta()" class="btn btn-success">
+        Generar venta
+      </div>
+    </div>
+  </div>
+
+
+</div>

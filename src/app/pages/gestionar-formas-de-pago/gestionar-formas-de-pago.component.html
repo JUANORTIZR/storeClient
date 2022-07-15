@@ -1,0 +1,55 @@
+<div class="container">
+
+  <div class="row">
+    <h3 *ngIf="editarMode==false">Crear forma de pago</h3>
+    <h3 *ngIf="editarMode">Actualizar forma de pago</h3>
+    <div class="col-auto">
+      <label for="exampleInputEmail1" class="form-label">Forma de pago</label>
+      <div class="mb-2 input-group">
+        <input type="text"  [(ngModel)]="formaDePago.formaDePago" class="form-control"
+          id="exampleInputEmail1" placeholder="Ingresa el forma de pago" aria-describedby="emailHelp">
+      </div>
+
+    </div>
+    <div class="col-2" *ngIf="editarMode==false">
+      <div  class="mt-4">
+        <button (click)="guardar()" class="btn btn-primary">
+          Guardar
+        </button>
+      </div>
+    </div>
+    <div class="col-2" *ngIf="editarMode==true" >
+      <div class="mt-4">
+        <button (click)="actualizar()" class="btn btn-primary">
+          actualizar
+        </button>
+      </div>
+
+    </div>
+
+  </div>
+
+ <div class="row">
+    <div class="col">
+      <table class="table table-success table-striped">
+        <thead>
+          <th scope="row">#</th>
+          <th>Id</th>
+          <th>Nombre</th>
+        </thead>
+        <tbody>
+          <tr *ngFor="let formaDePago of formasDepago; index as i">
+            <th scope="row">{{i+1}}</th>
+            <td>{{formaDePago.id}}</td>
+            <td>{{formaDePago.formaDePago}}</td>
+            <td><a (click)="eliminar(formaDePago.id)" type="button" class="btn btn-danger">eliminar</a>
+              <span  (click)="editar(formaDePago)" type="button" class="btn btn-primary mx-2">editar</span>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+</div>
+

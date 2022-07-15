@@ -10,6 +10,8 @@ import { GenerarVentaComponent } from './pages/generar-venta/generar-venta.compo
 import { CrearProductoComponent } from './pages/crear-producto/crear-producto.component';
 import { HttpClientModule } from '@angular/common/http';
 import { GestionClienteComponent } from './pages/gestion-cliente/gestion-cliente.component';
+import { GestionarRolesComponent } from './pages/gestionar-roles/gestionar-roles.component';
+import { GestionarFormasDePagoComponent } from './pages/gestionar-formas-de-pago/gestionar-formas-de-pago.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -17,7 +19,9 @@ import { GestionClienteComponent } from './pages/gestion-cliente/gestion-cliente
     InicioComponent,
     GenerarVentaComponent,
     CrearProductoComponent,
-    GestionClienteComponent
+    GestionClienteComponent,
+    GestionarRolesComponent,
+    GestionarFormasDePagoComponent
   ],
   imports: [
     BrowserModule,

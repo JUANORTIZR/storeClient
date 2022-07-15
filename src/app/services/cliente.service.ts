@@ -40,6 +40,10 @@ export class ClienteService {
     return this.http.delete<Response>(this.urbBase + "/delete/"+id);
   }
 
+  findById(id:any):Observable<Response>{
+    return this.http.get<Response>(this.urbBase + "/findById/"+id);
+  }
+
   update(cliente:any):Observable<Response>{
     const body = {
       identificacion: cliente.identificacion,

@@ -1,0 +1,54 @@
+<div class="container">
+
+  <div class="row">
+    <h3 *ngIf="editarMode==false">Crear rol</h3>
+    <h3 *ngIf="editarMode">Actualizar rol</h3>
+    <div class="col-auto">
+      <label for="exampleInputEmail1" class="form-label">Nombre</label>
+      <div class="mb-2 input-group">
+        <input type="text"  [(ngModel)]="rol.nombre" class="form-control"
+          id="exampleInputEmail1" placeholder="Ingresa el nombre del rol" aria-describedby="emailHelp">
+      </div>
+
+    </div>
+    <div class="col-2" *ngIf="editarMode==false">
+      <div  class="mt-4">
+        <button (click)="guardar()" class="btn btn-primary">
+          Guardar
+        </button>
+      </div>
+    </div>
+    <div class="col-2" *ngIf="editarMode==true" >
+      <div class="mt-4">
+        <button (click)="actualizar()" class="btn btn-primary">
+          actualizar
+        </button>
+      </div>
+
+    </div>
+
+  </div>
+
+ <div class="row">
+    <div class="col">
+      <table class="table table-success table-striped">
+        <thead>
+          <th scope="row">#</th>
+          <th>Id</th>
+          <th>Nombre</th>
+        </thead>
+        <tbody>
+          <tr *ngFor="let cliente of roles; index as i">
+            <th scope="row">{{i+1}}</th>
+            <td>{{cliente.id}}</td>
+            <td>{{cliente.nombre}}</td>
+            <td><a (click)="eliminar(cliente.id)" type="button" class="btn btn-danger">eliminar</a>
+              <span  (click)="editar(cliente)" type="button" class="btn btn-primary mx-2">editar</span>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+</div>
