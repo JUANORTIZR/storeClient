@@ -17,6 +17,7 @@ export class HistorialVentasComponent implements OnInit {
   }
 
   editar(factura: Factura){
+    factura.estado = "Eliminado";
     this.facturaService.put(factura.id, factura).subscribe(data => {
       alert(data.message);
     })

@@ -93,4 +93,13 @@ export class AppComponent implements OnInit {
 
     return lista;
   }
+
+  cerrarSesion(){
+    this.login = true;
+    localStorage.removeItem('token')
+    localStorage.removeItem('usuarioActivo')
+    setTimeout(() =>10000);
+    this.router.navigate(['/']);
+
+  }
 }

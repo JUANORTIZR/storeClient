@@ -68,7 +68,7 @@ export class FacturaService {
       detallesDeFacturas: factura.detallesDeFactura,
       formaDePago: factura.formasDePago,
     }
-    return this.http.put<Response>(this.urbBase+"/update"+id,body, this.getHeader())
+    return this.http.put<Response>(this.urbBase+"/update/"+id,body, this.getHeader())
   }
 
   update(factura: any): Observable<Response> {

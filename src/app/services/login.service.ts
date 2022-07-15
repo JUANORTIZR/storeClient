@@ -34,6 +34,7 @@ export class LoginService {
     const body = {
       nombreUsuario: usuario,
       clave: clave,
+
     }
     return this.http.post<Response>(this.urbBase + "/login", body)
       .pipe(

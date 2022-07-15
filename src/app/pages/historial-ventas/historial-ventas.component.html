@@ -18,8 +18,8 @@
           <th scope="row">{{i+1}}</th>
           <td>{{factura.id}}</td>
           <td>{{factura.estado}}</td>
-          <td>{{factura.fechaVenta}}</td>
-          <td>{{factura.fechaEntrega}}</td>
+          <td>{{factura.fechaVenta | date:'shortDate'}}</td>
+          <td>{{factura.fechaEntrega| date:'shortDate'}}</td>
           <td>{{factura.cliente}}</td>
           <td>{{factura.total}}</td>
           <td>

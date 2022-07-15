@@ -66,6 +66,7 @@ export class GestionClienteComponent implements OnInit {
   actualizar(){
     this.clienteService.update(this.cliente).subscribe(data => {
       alert(data.message)
+      this.consultarCliente();
     })
     this.cliente = new Cliente();
     this.editarMode = false;

@@ -79,7 +79,6 @@ export class GenerarVentaComponent implements OnInit {
 
   eliminar(i: any) {
     this.factura.detallesDeFactura.splice(i,1)
-
   }
 
   generarVenta(){

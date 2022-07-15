@@ -18,37 +18,39 @@ export class GestionarFormasDePagoComponent implements OnInit {
     this.consultarFormasDePago();
   }
 
-  guardar(){
+  guardar() {
 
     this.formaDePagoService.post(this.formaDePago).subscribe(data => {
       alert(data.message)
       this.consultarFormasDePago();
     })
+
   }
 
-  editar(rol:FormaDePago){
+  editar(rol: FormaDePago) {
     this.formaDePago = rol;
     this.editarMode = true;
   }
 
-  consultarFormasDePago(){
+  consultarFormasDePago() {
     this.formaDePagoService.findAll().subscribe(data => {
       this.formasDepago = [...data.object]
     })
   }
 
-  eliminar(id:any){
+  eliminar(id: any) {
     this.formaDePagoService.delete(id).subscribe(data => {
       alert(data.message)
     })
     this.consultarFormasDePago();
   }
 
-  actualizar(){
+  actualizar() {
     this.formaDePagoService.update(this.formaDePago).subscribe(data => {
       alert(data.message)
+      this.consultarFormasDePago();
     })
-    this.consultarFormasDePago();
+
     this.formaDePago = new FormaDePago();
     this.editarMode = false;
   }

@@ -10,7 +10,13 @@
           <a class="nav-link active" type="button" aria-current="page"  [routerLink]="[item.ruta]" routerLinkActive="router-link-active" >{{item.titulo}}</a>
         </li>
       </ul>
+
     </div>
+
+  </div>
+
+  <div (click)="cerrarSesion()" class="btn btn-primary">
+    Salir
   </div>
 </nav>
 
