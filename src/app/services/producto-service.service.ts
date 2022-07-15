@@ -22,10 +22,22 @@ export class ProductoService {
   urbBase = "http://localhost:8080/api/producto"
   constructor(private readonly http: HttpClient) { }
 
-  header = {
-    headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+  getHeader() {
+    return {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Authorization': this.getToken()
+      })
+    }
   }
 
+  getToken():string{
+    let token = localStorage.getItem('token')?.toString();
+    if(token == undefined){
+      return ""
+    }
+    return token;
+  }
   post(producto: any): Observable<Response> {
     const body = {
       id: Number(producto.id),
@@ -33,18 +45,18 @@ export class ProductoService {
       iva: Number(producto.iva),
       precioUnitario: Number(producto.precioUnitario)
     }
-    return this.http.post<Response>(this.urbBase + "/save", body, this.header)
+    return this.http.post<Response>(this.urbBase + "/save", body, this.getHeader())
       .pipe(
         tap(_ => console.log("Datos enviados")),
       )
   }
 
   findAll():Observable<Response> {
-    return this.http.get<Response>(this.urbBase+"/findAll");
+    return this.http.get<Response>(this.urbBase+"/findAll",this.getHeader());
   }
 
   delete(id:any):Observable<Response>{
-    return this.http.delete<Response>(this.urbBase + "/delete/"+id);
+    return this.http.delete<Response>(this.urbBase + "/delete/"+id,this.getHeader());
   }
 
   update(producto:any):Observable<Response>{
@@ -54,7 +66,7 @@ export class ProductoService {
       iva: Number(producto.iva),
       precioUnitario: Number(producto.precioUnitario)
     }
-    return this.http.put<Response>(this.urbBase + "/update/"+producto.id, body);
+    return this.http.put<Response>(this.urbBase + "/update/"+producto.id, body,this.getHeader());
   }
 }
 

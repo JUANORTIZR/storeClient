@@ -12,6 +12,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { GestionClienteComponent } from './pages/gestion-cliente/gestion-cliente.component';
 import { GestionarRolesComponent } from './pages/gestionar-roles/gestionar-roles.component';
 import { GestionarFormasDePagoComponent } from './pages/gestionar-formas-de-pago/gestionar-formas-de-pago.component';
+import { HistorialVentasComponent } from './pages/historial-ventas/historial-ventas.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -21,7 +22,8 @@ import { GestionarFormasDePagoComponent } from './pages/gestionar-formas-de-pago
     CrearProductoComponent,
     GestionClienteComponent,
     GestionarRolesComponent,
-    GestionarFormasDePagoComponent
+    GestionarFormasDePagoComponent,
+    HistorialVentasComponent
   ],
   imports: [
     BrowserModule,

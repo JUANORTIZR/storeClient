@@ -19,7 +19,7 @@ export class LoginComponent implements OnInit {
   login(){
     this.loginService.login(this.usuario, this.clave).subscribe(data => {
       if(data.object!="Datos incorrectos"){
-        localStorage.setItem('token', JSON.stringify(data.object));
+        localStorage.setItem('token',data.object);
         this.router.navigate(['/inicio']);
       }else{
         alert(data.object)

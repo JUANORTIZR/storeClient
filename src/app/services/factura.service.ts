@@ -13,8 +13,21 @@ export class FacturaService {
   urbBase = "http://localhost:8080/api/factura"
   constructor(private readonly http: HttpClient) { }
 
-  header = {
-    headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+  getHeader() {
+    return {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Authorization': this.getToken()
+      })
+    }
+  }
+
+  getToken():string{
+    let token = localStorage.getItem('token')?.toString();
+    if(token == undefined){
+      return ""
+    }
+    return token;
   }
 
   post(factura: Factura): Observable<Response> {
@@ -29,18 +42,18 @@ export class FacturaService {
       detallesDeFacturas: factura.detallesDeFactura,
       formaDePago: factura.formasDePago,
     }
-    return this.http.post<Response>(this.urbBase + "/save", body, this.header)
+    return this.http.post<Response>(this.urbBase + "/save", body,this.getHeader())
       .pipe(
         tap(_ => console.log("Datos enviados")),
       )
   }
 
   findAll(): Observable<Response> {
-    return this.http.get<Response>(this.urbBase + "/findAll");
+    return this.http.get<Response>(this.urbBase + "/findAll",this.getHeader());
   }
 
   delete(id: any): Observable<Response> {
-    return this.http.delete<Response>(this.urbBase + "/delete/" + id);
+    return this.http.delete<Response>(this.urbBase + "/delete/" + id,this.getHeader());
   }
 
   update(factura: any): Observable<Response> {
@@ -55,6 +68,6 @@ export class FacturaService {
       detallesDeFactura: factura.detallesDeFactura,
       formasDepago: factura.formasDepago,
     }
-    return this.http.put<Response>(this.urbBase + "/update/" + factura.id, body);
+    return this.http.put<Response>(this.urbBase + "/update/" + factura.id, body,this.getHeader());
   }
 }

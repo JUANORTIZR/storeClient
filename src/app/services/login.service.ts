@@ -12,12 +12,25 @@ export class LoginService {
   urbBase = "http://localhost:8080/api"
   constructor(private readonly http: HttpClient) { }
 
-  header = {
-    headers: new HttpHeaders({ 'Content-Type': 'application/json'})
+  getHeader() {
+    return {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Authorization': this.getToken()
+      })
+    }
+  }
+
+  getToken():string{
+    let token = localStorage.getItem('token')?.toString();
+    if(token == undefined){
+      return ""
+    }
+    return token;
   }
 
 
-  login(usuario: any, clave:string): Observable<Response> {
+  login(usuario: any, clave: string): Observable<Response> {
     const body = {
       nombreUsuario: usuario,
       clave: clave,
