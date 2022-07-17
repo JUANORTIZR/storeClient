@@ -41,8 +41,9 @@ export class GestionarFormasDePagoComponent implements OnInit {
   eliminar(id: any) {
     this.formaDePagoService.delete(id).subscribe(data => {
       alert(data.message)
+      this.consultarFormasDePago();
     })
-    this.consultarFormasDePago();
+
   }
 
   actualizar() {

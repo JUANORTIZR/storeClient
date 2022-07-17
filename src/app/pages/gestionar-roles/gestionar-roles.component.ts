@@ -39,15 +39,17 @@ export class GestionarRolesComponent implements OnInit {
   eliminar(id:any){
     this.rolService.delete(id).subscribe(data => {
       alert(data.message)
+      this.consultarRoles();
     })
-    this.consultarRoles();
+
   }
 
   actualizar(){
     this.rolService.update(this.rol).subscribe(data => {
       alert(data.message)
+      this.consultarRoles();
     })
-    this.consultarRoles();
+
     this.rol = new Rol();
     this.editarMode = false;
   }
